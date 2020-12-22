@@ -3,6 +3,7 @@ package pageObjects;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -10,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -32,7 +34,7 @@ public class LeadInputPage {
 		By image = By.xpath("//p[@class ='choose-image']");
 		
 	    public void getExcelSheetData() throws IOException, InterruptedException {
-			FileInputStream fis = new FileInputStream("C:\\Users\\sivajana\\Documents\\Selenium\\Sample data.xlsx");
+			FileInputStream fis = new FileInputStream("C:\\Users\\sivajana\\Documents\\Selenium\\Book1.xlsx");
 			XSSFWorkbook book = new XSSFWorkbook(fis);
 			int sheetcount = book.getNumberOfSheets();
 			for(int i=0;i<sheetcount;i++) {
@@ -49,11 +51,11 @@ public class LeadInputPage {
 						   case 1 : driver.findElement(lastName).sendKeys(cellvalue);break;
 						   case 2 : driver.findElement(phoneNumber).sendKeys(cellvalue);break;
 						   case 3 : driver.findElement(Email).sendKeys(cellvalue);break;
-						   case 4 : driver.findElement(date).sendKeys(cellvalue);break;
+						   case 4 : driver.findElement(date).sendKeys(cellvalue);break;	
 						   case 5 : driver.findElement(time).sendKeys(cellvalue);break;
 						   case 6 : driver.findElement(document).sendKeys(cellvalue);break;
 						   case 7 : driver.findElement(image).sendKeys(cellvalue);break;
-						   default : driver.findElement(firstName).sendKeys(cellvalue);break;
+						   default :driver.findElement(firstName).sendKeys(cellvalue);break;
 						   }
 						   	    System.out.println(cellvalue);
 						   	    
@@ -77,7 +79,7 @@ public class LeadInputPage {
 		   default:
 				   return cell.getStringCellValue();
 		   }
-		
-		   
+				   
 	   }
+	   
 }
